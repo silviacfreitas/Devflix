@@ -1,0 +1,16 @@
+{
+    "categorias": [        
+        {
+            "id": 1,
+            "nome": "Frond End",
+            "descrição": "LoremIpsum Frond End Javascript function array class object",
+            "cor": "#6BD1FF"
+        },
+        {
+            "id": 2,
+            "nome": "Back End",
+            "descrição": "LoremIpsum Back End Javascript function array class object",
+            "cor": "#6BD1FF"
+        }
+    ]
+}
