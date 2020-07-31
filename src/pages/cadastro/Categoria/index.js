@@ -29,7 +29,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL_DATA = 'http://localhost:3030/categorias';
+    const URL_DATA = window.location.hostname.includes('localhost')
+      ? 'http://localhost:3030/categorias'
+      : 'https://tripflix-project.herokuapp.com/categorias';
     fetch(URL_DATA)
       .then(async (serverResponse) => {
         const response = await (serverResponse).json();
@@ -108,9 +110,9 @@ function CadastroCategoria() {
         )}
 
         <ul>
-          {categorias.map((categoria, indice) => (
-            <li key={`${categoria}${indice}`}>
-              {categoria.nome}
+          {categorias.map((categoria) => (
+            <li key={`${categoria.titulo}`}>
+              {categoria.titulo}
             </li>
           ))}
         </ul>
