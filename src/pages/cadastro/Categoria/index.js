@@ -4,29 +4,18 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
-  const [categorias, setCategorias] = useState([]);
   const valoresIniciais = {
     nome: '',
     descricao: '',
     cor: '',
   };
-  const [values, setValues] = useState(valoresIniciais);
 
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor,
-    });
-  }
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
 
-  function handleChange(infosEvento) {
-    setValue(
-      infosEvento.target.getAttribute('name'),
-      infosEvento.target.value,
-    );
-  }
+  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     const URL_DATA = window.location.hostname.includes('localhost')
@@ -39,24 +28,6 @@ function CadastroCategoria() {
           ...response,
         ]);
       });
-
-    // setTimeout(() => {
-    //   setCategorias([
-    //     ...categorias,
-    //     {
-    //       id: 1,
-    //       nome: 'Frond End',
-    //       descrição: 'LoremIpsum Frond End Javascript function array class object',
-    //       cor: '#6BD1FF',
-    //     },
-    //     {
-    //       id: 2,
-    //       nome: 'Back End',
-    //       descrição: 'LoremIpsum Back End Javascript function array class object',
-    //       cor: '#6BD1FF',
-    //     },
-    //   ]);
-    // }, 1 * 1000);
   }, []);
 
   return (
@@ -71,7 +42,8 @@ function CadastroCategoria() {
           ...categorias,
           values,
         ]);
-        setValues(valoresIniciais);
+
+        clearForm();
       }}
       >
 
