@@ -28,7 +28,7 @@ function CadastroCategoria() {
 
   function handleChange(infosEvento) {
     setValue(
-      infosEvento.target.getAttibute('name'),
+      infosEvento.target.getAttribute('name'),
       infosEvento.target.value,
     );
   }
@@ -37,14 +37,18 @@ function CadastroCategoria() {
     // const URL_DATA = window.location.hostname.includes('localhost')
     //   ? 'http://localhost:3030/categorias'
     //   : 'https://tripflix-project.herokuapp.com/categorias';
-    const URL_DATA = 'http://localhost:3030/categorias';
-    fetch(URL_DATA)
-      .then(async (serverResponse) => {
-        const response = await (serverResponse).json();
-        setCategorias([
-          ...response,
-        ]);
-      });
+    if (window.location.href.includes('localhost')) {
+      const URL_DATA = 'http://localhost:3030/categorias';
+      fetch(URL_DATA)
+        .then(async (serverResponse) => {
+          if (serverResponse.ok) {
+            const response = await (serverResponse).json();
+            setCategorias(response);
+            return;
+          }
+          throw new Error('Não foi possível pegar os dados');
+        });
+    }
   }, []);
 
   return (
@@ -108,8 +112,8 @@ function CadastroCategoria() {
         )}
 
         <ul className="categorias_formulario">
-          {categorias.map((categoria) => (
-            <li key={`${categoria.titulo}`} style={{ background: `${categoria.cor}` }}>
+          {categorias.map((categoria, indice) => (
+            <li key={`${categoria}${indice}`} style={{ background: `${categoria.cor}` }}>
               {categoria.titulo}
             </li>
           ))}
