@@ -29,7 +29,7 @@ function Home() {
               <BannerMain
                 videoTitle={dadosIniciais[0].videos[0].titulo}
                 url={dadosIniciais[0].videos[0].url}
-                videoDescription="O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript parte da rotina das desenvolvedoras e desnvovlvedores. Mas o que els fazem afinal? Descubra com a Vanessa!"
+                videoDescription="Southeast Asia is a group of diverse countries between the Indian Ocean and the Pacific Ocean, featuring indigenous cultures influenced by Indian, Chinese and Western culture. Here’s a look at the best places to visit in Southeast Asia:"
               />
               <Carousel
                 ignoreFirstVideo

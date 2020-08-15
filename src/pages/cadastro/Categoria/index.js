@@ -5,6 +5,7 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import '../styles.css';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -71,9 +72,15 @@ function CadastroCategoria() {
           onChange={handleChange}
         />
 
-        <Button>
-          Cadastrar
-        </Button>
+        <footer>
+          <Button className="cadastrar">
+            Cadastrar
+          </Button>
+
+          <Link className="home" to="/">
+            Ir para Home
+          </Link>
+        </footer>
 
         {categorias.length === 0 && (
           <div>
@@ -81,18 +88,15 @@ function CadastroCategoria() {
           </div>
         )}
 
-        <ul>
+        <ul className="categorias_formulario">
           {categorias.map((categoria) => (
-            <li key={`${categoria.titulo}`}>
+            <li key={`${categoria.titulo}`} style={{ background: `${categoria.cor}` }}>
               {categoria.titulo}
             </li>
           ))}
         </ul>
       </form>
 
-      <Link to="/">
-        Ir para Home
-      </Link>
     </PageDefault>
   );
 }

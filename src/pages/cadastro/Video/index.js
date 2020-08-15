@@ -7,15 +7,16 @@ import useForm from '../../../hooks/useForm';
 import Button from '../../../components/Button';
 import videoRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categorias';
+import '../styles.css';
 
 function CadastroVideo() {
   const history = useHistory();
   const [categorias, setCategorias] = useState([]);
   const categoryTitles = categorias.map(({ titulo }) => titulo);
   const { handleChange, values } = useForm({
-    titulo: 'Vídeo Padrão',
-    url: 'https://www.youtube.com/watch?v=6IuQUgeDPg0',
-    categoria: 'Front End',
+    titulo: '',
+    url: '',
+    categoria: '',
   });
 
   useEffect(() => {
@@ -71,14 +72,18 @@ function CadastroVideo() {
           suggestions={categoryTitles}
         />
 
-        <Button type="submit">
-          Cadastrar
-        </Button>
+        <footer>
+          <Button className="cadastar" type="submit">
+            Cadastrar
+          </Button>
+
+          <Link className="link_categoria" to="/cadastro/categoria">
+            Cadastrar Categoria
+          </Link>
+        </footer>
 
       </form>
-      <Link to="/cadastro/categoria">
-        Cadastrar Categoria
-      </Link>
+
     </PageDefault>
   );
 }
