@@ -72,7 +72,7 @@ function CadastroVideo() {
           suggestions={categoryTitles}
         />
 
-        <footer>
+        <footer id="form_footer">
           <Button className="cadastar" type="submit">
             Cadastrar
           </Button>
