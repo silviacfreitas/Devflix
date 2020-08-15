@@ -112,8 +112,8 @@ function CadastroCategoria() {
         )}
 
         <ul className="categorias_formulario">
-          {categorias.map((categoria, indice) => (
-            <li key={`${categoria}${indice}`} style={{ background: `${categoria.cor}` }}>
+          {categorias.map((categoria) => (
+            <li key={`${categoria.id}`} style={{ background: `${categoria.cor}` }}>
               {categoria.titulo}
             </li>
           ))}
